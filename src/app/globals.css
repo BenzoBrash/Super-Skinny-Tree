@@ -1,0 +1,121 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%; /* White */
+    --foreground: 120 25% 15%; /* Dark Green */
+
+    --card: 0 0% 98%; /* Off-white */
+    --card-foreground: 120 25% 15%;
+
+    --popover: 0 0% 98%;
+    --popover-foreground: 120 25% 15%;
+
+    --primary: 140 60% 40%; /* Vibrant Green */
+    --primary-foreground: 0 0% 98%; /* Off-white */
+
+    --secondary: 120 25% 94%; /* Light Green */
+    --secondary-foreground: 120 25% 15%;
+
+    --muted: 120 25% 94%;
+    --muted-foreground: 120 25% 40%;
+
+    --accent: 45 80% 50%; /* Gold */
+    --accent-foreground: 20 10% 10%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 10% 85%;
+    --input: 120 10% 85%;
+    --ring: 140 60% 40%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 120 25% 15%;
+    --sidebar-primary: 140 60% 40%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 120 25% 94%;
+    --sidebar-accent-foreground: 120 25% 15%;
+    --sidebar-border: 120 10% 85%;
+    --sidebar-ring: 140 60% 40%;
+  }
+
+  .dark {
+    /* A dark holiday theme */
+    --background: 120 25% 10%; /* Very Dark Green */
+    --foreground: 0 0% 95%; /* Light Gray */
+
+    --card: 120 25% 15%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 120 25% 15%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 140 60% 50%; /* Brighter Vibrant Green */
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 120 25% 20%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 120 25% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 45 80% 60%; /* Brighter Gold */
+    --accent-foreground: 20 10% 10%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 120 25% 25%;
+    --input: 120 25% 25%;
+    --ring: 140 60% 50%;
+
+    --sidebar-background: 120 25% 10%;
+    --sidebar-foreground: 0 0% 95%;
+    --sidebar-primary: 140 60% 50%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 120 25% 20%;
+    --sidebar-accent-foreground: 0 0% 95%;
+    --sidebar-border: 120 25% 25%;
+    --sidebar-ring: 140 60% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+    .wheel-container {
+        @apply relative w-80 h-80 rounded-full flex items-center justify-center;
+    }
+    .wheel {
+        @apply absolute w-full h-full rounded-full border-8 border-accent transition-transform ease-out;
+        transition-duration: 4000ms;
+        background-image: conic-gradient(
+            hsl(var(--primary)) 0deg 45deg,
+            hsl(var(--secondary)) 45deg 90deg,
+            hsl(var(--primary) / 0.8) 90deg 135deg,
+            hsl(var(--secondary)) 135deg 180deg,
+            hsl(var(--primary)) 180deg 225deg,
+            hsl(var(--secondary)) 225deg 270deg,
+            hsl(var(--primary) / 0.8) 270deg 315deg,
+            hsl(var(--secondary)) 315deg 360deg
+        );
+    }
+    .wheel-segment {
+        @apply absolute w-1/2 h-1/2 origin-bottom-right flex items-center justify-start pl-4 transform;
+    }
+    .wheel-pointer {
+        @apply absolute -top-2 left-1/2 -translate-x-1/2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-l-transparent border-r-transparent border-b-foreground z-10;
+    }
+}

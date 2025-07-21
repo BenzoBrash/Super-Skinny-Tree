@@ -1,0 +1,11 @@
+
+{
+  "apphosting": {
+    "source": ".",
+    "region": "us-central1",
+    "predeploy": [
+      "npm install",
+      "npm run build"
+    ]
+  }
+}
